@@ -73,8 +73,8 @@ public class InheritedChannelTest {
     @DataProvider
     public Object[][] testCases() {
         return new Object[][]{
-            { "StateTest", List.of(StateTest.class.getName()) }
-/*            { "EchoTest",  List.of(EchoTest.class.getName())  },
+            { "StateTest", List.of(StateTest.class.getName()) },
+            { "EchoTest",  List.of(EchoTest.class.getName())  },
             { "CloseTest", List.of(CloseTest.class.getName()) },
 
             // run StateTest with a SecurityManager set
@@ -91,7 +91,7 @@ public class InheritedChannelTest {
                                                            "-Djava.security.manager",
                                                            "-Djava.security.policy="
                                                            + POLICY_FAIL)
-            }*/
+            }
         };
     }
 
