@@ -73,9 +73,9 @@ public class InheritedChannelTest {
     @DataProvider
     public Object[][] testCases() {
         return new Object[][]{
-            { "StateTest", List.of(StateTest.class.getName()) },
-            { "EchoTest",  List.of(EchoTest.class.getName())  },
-            { "CloseTest", List.of(CloseTest.class.getName()) },
+//            { "StateTest", List.of(StateTest.class.getName()) },
+            { "EchoTest",  List.of(EchoTest.class.getName())  }
+/*            { "CloseTest", List.of(CloseTest.class.getName()) },
 
             // run StateTest with a SecurityManager set
             // Note that the system properties are arguments to StateTest and not options.
@@ -91,7 +91,7 @@ public class InheritedChannelTest {
                                                            "-Djava.security.manager",
                                                            "-Djava.security.policy="
                                                            + POLICY_FAIL)
-            }
+            }*/
         };
     }
 
