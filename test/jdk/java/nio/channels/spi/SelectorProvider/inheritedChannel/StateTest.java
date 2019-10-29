@@ -66,7 +66,7 @@ public class StateTest {
          */
         ssc.configureBlocking(false);
         sk = ssc.register(sel, SelectionKey.OP_ACCEPT);
-        long to = 15*1000;
+        long to = 15*10000;
         sc = null;
         for (;;) {
             long st = System.currentTimeMillis();
