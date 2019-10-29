@@ -144,9 +144,8 @@ public class EchoTest {
         // and receive the echo
         byte b[] = new byte[msg.length() + 100];
         DatagramPacket pkt2 = new DatagramPacket(b, b.length);
-        dc.socket().setSoTimeout(50000);
+        dc.socket().setSoTimeout(5000);
         dc.socket().receive(pkt2);
-		System.out.println("TIMEOUT SET TO 50000");
 
         if (pkt2.getLength() != msg.length()) {
             throw new RuntimeException("Received packet of incorrect length");
