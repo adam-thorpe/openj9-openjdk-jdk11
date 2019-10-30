@@ -99,6 +99,9 @@ public class EchoService {
     private static void doIt(DatagramChannel dc) throws IOException {
         ByteBuffer bb = ByteBuffer.allocate(1024);
         SocketAddress sa = dc.receive(bb);
+
+		System.out.println(bb.array());
+
         bb.flip();
         dc.send(bb, sa);
         dc.close();

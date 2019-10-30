@@ -58,7 +58,7 @@ public class EchoTest {
     private static void TCPEchoTest() throws IOException {
         SocketChannel sc = Launcher.launchWithSocketChannel(ECHO_SERVICE, null);
 
-        String msg = "Where's that damn torpedo?";
+        String msg = "Where's that damn thorpedo?";
         int repeat = 100;
         int size = msg.length() * repeat;
 
