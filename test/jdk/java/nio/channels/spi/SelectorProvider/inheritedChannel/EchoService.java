@@ -100,6 +100,7 @@ public class EchoService {
         ByteBuffer bb = ByteBuffer.allocate(1024);
         SocketAddress sa = dc.receive(bb);
 
+		System.out.println("DATA RECIEVED:");
 		System.out.println(bb.array());
 
         bb.flip();
