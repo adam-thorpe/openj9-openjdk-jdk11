@@ -163,23 +163,23 @@ public class EchoTest {
     public static void main(String args[]) throws IOException {
 
         // TCP echo
-        try {
+/*        try {
             TCPEchoTest();
             System.out.println("TCP echo test passed.");
         } catch (Exception x) {
             System.err.println(x);
             failures++;
-        }
+        }*/
 
         // UDP echo
-/*        try {
+        try {
             UDPEchoTest();
             System.out.println("UDP echo test passed.");
         } catch (Exception x) {
             x.printStackTrace();
             System.err.println(x);
             failures++;
-        }*/
+        }
 
         if (failures > 0) {
             throw new RuntimeException("Test failed - see log for details");
