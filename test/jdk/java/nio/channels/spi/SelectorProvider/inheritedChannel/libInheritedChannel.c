@@ -92,7 +92,9 @@ JNIEXPORT void JNICALL Java_Launcher_launch0
     struct dirent* dirp;
     int thisFd;
     char** cmdv;
-    int i, cmdlen;
+	int i, cmdlen;
+
+	printf("AT C CODE");
 
     /*
      * Argument 0 of the command array is the program name.
