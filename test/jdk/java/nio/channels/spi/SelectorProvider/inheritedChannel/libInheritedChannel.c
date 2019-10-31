@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_Launcher_launch0
         if (cmdv[i] == NULL) {
             return;
         }
-		printf("C code: %s", str);
+		printf("C code: %s", cmdv[i]);
     }
 
     /*
