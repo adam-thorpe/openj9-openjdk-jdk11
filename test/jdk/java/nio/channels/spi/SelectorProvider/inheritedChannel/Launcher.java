@@ -60,7 +60,7 @@ public class Launcher {
             }
         }
 
-		System.out.println(cmdarray);
+		System.out.println("arg 1: " + cmdarray[0] + " arg 2: " + cmdarray[1]);
 
         launch0(cmdarray, fd);
     }
