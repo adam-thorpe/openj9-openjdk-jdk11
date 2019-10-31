@@ -125,6 +125,7 @@ public class Launcher {
     public static DatagramChannel launchWithDatagramChannel(String className, String options[], String args[])
         throws IOException
     {
+		System.out.println("AT LANUCHER");
         DatagramChannel dc = DatagramChannel.open();
         dc.socket().bind(new InetSocketAddress(0));
 
