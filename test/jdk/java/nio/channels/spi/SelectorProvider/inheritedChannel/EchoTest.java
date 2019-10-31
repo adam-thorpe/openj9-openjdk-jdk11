@@ -143,7 +143,7 @@ public class EchoTest {
         DatagramChannel dc = Launcher.launchWithDatagramChannel(ECHO_SERVICE, null);
 
         String msg = "I was out saving the galaxy when your grandfather was in diapers";
-
+		System.out.println("AT ECHOTEST");
         ByteBuffer bb = ByteBuffer.wrap(msg.getBytes("UTF-8"));
         dc.write(bb);
 
