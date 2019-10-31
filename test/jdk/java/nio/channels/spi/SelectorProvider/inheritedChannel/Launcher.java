@@ -59,6 +59,9 @@ public class Launcher {
                 cmdarray[pos++] = arg;
             }
         }
+
+		System.out.println(cmdarray);
+
         launch0(cmdarray, fd);
     }
 
