@@ -37,7 +37,7 @@ public class ExceptionTranslation {
         InetSocketAddress iAddr = new InetSocketAddress("nosuchhostname",5182);
         try {
             SocketChannel channel = SocketChannel.open();
-            channel.socket().connect(iAddr, 30000);
+            channel.socket().connect(iAddr);
             throw new RuntimeException("Expected exception not thrown");
         } catch (UnknownHostException x) {
             // Expected result
