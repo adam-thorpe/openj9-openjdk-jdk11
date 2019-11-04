@@ -85,6 +85,7 @@ class Socket implements java.io.Closeable {
      * @revised 1.4
      */
     public Socket() {
+		System.out.println("at Socket()");
         setImpl();
     }
 
@@ -228,6 +229,7 @@ class Socket implements java.io.Closeable {
     public Socket(String host, int port)
         throws UnknownHostException, IOException
     {
+		System.out.println("at Socket(2)");
         this(host != null ? new InetSocketAddress(host, port) :
              new InetSocketAddress(InetAddress.getByName(null), port),
              (SocketAddress) null, true);
@@ -591,10 +593,14 @@ class Socket implements java.io.Closeable {
         if (!(endpoint instanceof InetSocketAddress))
             throw new IllegalArgumentException("Unsupported address type");
 
+		System.out.println("at connect()");
         InetSocketAddress epoint = (InetSocketAddress) endpoint;
+		System.out.println("got socketaddress");
         InetAddress addr = epoint.getAddress ();
+		System.out.println("got address");
         int port = epoint.getPort();
         checkAddress(addr, "connect");
+		System.out.println("check address pass");
 
         SecurityManager security = System.getSecurityManager();
         if (security != null) {
@@ -603,9 +609,13 @@ class Socket implements java.io.Closeable {
             else
                 security.checkConnect(addr.getHostAddress(), port);
         }
+		System.out.println("check with security manager pass");
         if (!created)
+			System.out.println("create impl");
             createImpl(true);
+			System.out.println("create impl pass");
         if (!oldImpl)
+			System.out.println("old impl");
             impl.connect(epoint, timeout);
         else if (timeout == 0) {
             if (epoint.isUnresolved())
@@ -620,6 +630,7 @@ class Socket implements java.io.Closeable {
          * the kernel will have picked an ephemeral port & a local address
          */
         bound = true;
+		System.out.println("done");
     }
 
     /**
