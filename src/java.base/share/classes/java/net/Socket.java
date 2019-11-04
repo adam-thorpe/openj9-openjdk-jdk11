@@ -610,14 +610,15 @@ class Socket implements java.io.Closeable {
                 security.checkConnect(addr.getHostAddress(), port);
         }
 		System.out.println("check with security manager pass");
-        if (!created)
+        if (!created) {
 			System.out.println("create impl");
             createImpl(true);
 			System.out.println("create impl pass");
-        if (!oldImpl)
+		}
+        if (!oldImpl) {
 			System.out.println("old impl");
             impl.connect(epoint, timeout);
-        else if (timeout == 0) {
+		} else if (timeout == 0) {
             if (epoint.isUnresolved())
                 impl.connect(addr.getHostName(), port);
             else
