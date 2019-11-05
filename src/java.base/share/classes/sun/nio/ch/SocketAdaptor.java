@@ -90,6 +90,8 @@ class SocketAdaptor
         if (timeout < 0)
             throw new IllegalArgumentException("connect: timeout can't be negative");
 
+		System.out.println("timeout: " + timeout);
+
         synchronized (sc.blockingLock()) {
             if (!sc.isBlocking())
                 throw new IllegalBlockingModeException();
@@ -97,16 +99,22 @@ class SocketAdaptor
             try {
                 // no timeout
                 if (timeout == 0) {
+					System.out.println("t=0");
                     sc.connect(remote);
+					System.out.println("t=0 return");
                     return;
                 }
 
                 // timed connect
+				System.out.println("t!=0");
                 sc.configureBlocking(false);
                 try {
-                    if (sc.connect(remote))
+                    if (sc.connect(remote)) {
+						System.out.println("t!=0 return");
                         return;
+					}
                 } finally {
+					System.out.println("fin");
                     try {
                         sc.configureBlocking(true);
                     } catch (ClosedChannelException e) { }
@@ -117,6 +125,7 @@ class SocketAdaptor
                 for (;;) {
                     long startTime = System.nanoTime();
                     if (sc.pollConnected(to)) {
+						System.out.println("connected");
                         boolean connected = sc.finishConnect();
                         assert connected;
                         break;
