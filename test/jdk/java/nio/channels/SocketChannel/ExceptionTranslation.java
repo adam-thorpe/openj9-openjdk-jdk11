@@ -34,7 +34,7 @@ import java.net.*;
 
 public class ExceptionTranslation {
     public static void main(String args[]) throws Exception {
-        InetSocketAddress iAddr = new InetSocketAddress("nosuchhostname",5182);
+        InetSocketAddress iAddr = new InetSocketAddress("nosuchhostname",5982);
         try {
             SocketChannel channel = SocketChannel.open();
             channel.socket().connect(iAddr);
@@ -43,6 +43,8 @@ public class ExceptionTranslation {
 			System.out.println(x);
             // Expected result
         }
+
+		System.out.println("Done test 1");
 
         try {
             SocketChannel chan1 = SocketChannel.open();
