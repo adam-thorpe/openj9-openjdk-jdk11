@@ -229,10 +229,10 @@ class Socket implements java.io.Closeable {
     public Socket(String host, int port)
         throws UnknownHostException, IOException
     {
-		System.out.println("at Socket(2)");
         this(host != null ? new InetSocketAddress(host, port) :
              new InetSocketAddress(InetAddress.getByName(null), port),
              (SocketAddress) null, true);
+		System.out.println("at Socket(2)");
     }
 
     /**
