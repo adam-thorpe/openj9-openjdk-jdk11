@@ -703,6 +703,7 @@ class SocketChannelImpl
                         endConnect(blocking, (n > 0));
                     }
                     assert IOStatus.check(n);
+					System.out.println("done here");
                     return n > 0;
                 } finally {
                     writeLock.unlock();
@@ -716,7 +717,6 @@ class SocketChannelImpl
             close();
             throw SocketExceptions.of(ioe, isa);
         }
-		System.out.println("done here");
     }
 
     /**
