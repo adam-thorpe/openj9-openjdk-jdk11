@@ -673,13 +673,18 @@ class SocketChannelImpl
     @Override
     public boolean connect(SocketAddress sa) throws IOException {
         InetSocketAddress isa = Net.checkAddress(sa);
+		System.out.println("check address");
+
         SecurityManager sm = System.getSecurityManager();
         if (sm != null)
             sm.checkConnect(isa.getAddress().getHostAddress(), isa.getPort());
 
+		System.out.println("security manager");
         InetAddress ia = isa.getAddress();
         if (ia.isAnyLocalAddress())
             ia = InetAddress.getLocalHost();
+
+		System.out.println("Inet address");
 
         try {
             readLock.lock();
@@ -689,6 +694,7 @@ class SocketChannelImpl
                     int n = 0;
                     boolean blocking = isBlocking();
                     try {
+						System.out.println("Trying to connect");
                         beginConnect(blocking, isa);
                         do {
                             n = Net.connect(fd, ia, isa.getPort());
@@ -705,10 +711,12 @@ class SocketChannelImpl
                 readLock.unlock();
             }
         } catch (IOException ioe) {
+			ioe.printStackTrace();
             // connect failed, close the channel
             close();
             throw SocketExceptions.of(ioe, isa);
         }
+		System.out.println("done here");
     }
 
     /**
