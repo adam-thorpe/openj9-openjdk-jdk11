@@ -40,7 +40,7 @@ public class ExceptionTranslation {
             channel.socket().connect(iAddr);
             throw new RuntimeException("Expected exception not thrown");
         } catch (UnknownHostException x) {
-			System.out.println(x.getStackTrace());
+			x.printStackTrace();
             // Expected result
         }
 
