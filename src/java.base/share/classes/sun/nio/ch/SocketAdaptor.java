@@ -141,6 +141,7 @@ class SocketAdaptor
                 }
 
             } catch (Exception x) {
+				x.printStackTrace();
                 Net.translateException(x, true);
             }
         }
