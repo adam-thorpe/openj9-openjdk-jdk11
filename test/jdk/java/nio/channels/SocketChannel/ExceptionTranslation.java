@@ -38,6 +38,8 @@ public class ExceptionTranslation {
 
 		if(iAddr.isUnresolved())
 			throw new Exception("Address is unresolved");
+		else 
+			System.out.println(iAddr.getAddress());
 
         try {
             SocketChannel channel = SocketChannel.open();
