@@ -218,7 +218,9 @@ public class InetSocketAddress
         String host = null;
         try {
             addr = InetAddress.getByName(hostname);
+			System.out.println(addr);
         } catch(UnknownHostException e) {
+			e.printStackTrace();
             host = hostname;
         }
         holder = new InetSocketAddressHolder(host, addr, checkPort(port));

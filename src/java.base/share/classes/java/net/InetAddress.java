@@ -1300,13 +1300,15 @@ class InetAddress implements java.io.Serializable {
 
     private static InetAddress[] getAllByName(String host, InetAddress reqAddr)
         throws UnknownHostException {
-
+		
+        System.out.println("host:" + host);
         if (host == null || host.isEmpty()) {
             InetAddress[] ret = new InetAddress[1];
             ret[0] = impl.loopbackAddress();
             return ret;
         }
 
+		System.out.println("2");
         boolean ipv6Expected = false;
         if (host.charAt(0) == '[') {
             // This is supposed to be an IPv6 literal
@@ -1319,15 +1321,18 @@ class InetAddress implements java.io.Serializable {
             }
         }
 
+		System.out.println("3");
         // if host is an IP address, we won't do further lookup
         if (Character.digit(host.charAt(0), 16) != -1
             || (host.charAt(0) == ':')) {
+			System.out.println("5");
             byte[] addr = null;
             int numericZone = -1;
             String ifname = null;
             // see if it is IPv4 address
             addr = IPAddressUtil.textToNumericFormatV4(host);
             if (addr == null) {
+				System.out.println("6");
                 // This is supposed to be an IPv6 literal
                 // Check if a numeric or string zone id is present
                 int pos;
@@ -1344,8 +1349,10 @@ class InetAddress implements java.io.Serializable {
                 // Means an IPv4 litteral between brackets!
                 throw new UnknownHostException("["+host+"]");
             }
+			System.out.println("7");
             InetAddress[] ret = new InetAddress[1];
             if(addr != null) {
+				System.out.println("8");
                 if (addr.length == Inet4Address.INADDRSZ) {
                     ret[0] = new Inet4Address(null, addr);
                 } else {
@@ -1355,9 +1362,11 @@ class InetAddress implements java.io.Serializable {
                         ret[0] = new Inet6Address(null, addr, numericZone);
                     }
                 }
+				System.out.println("9");
                 return ret;
             }
         } else if (ipv6Expected) {
+			System.out.println("4");
             // We were expecting an IPv6 Litteral, but got something else
             throw new UnknownHostException("["+host+"]");
         }
