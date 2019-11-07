@@ -35,6 +35,10 @@ import java.net.*;
 public class ExceptionTranslation {
     public static void main(String args[]) throws Exception {
         InetSocketAddress iAddr = new InetSocketAddress("nosuchhostname",5982);
+
+		if(iAddr.isUnresolved())
+			throw new Exception("Address is unresolved");
+
         try {
             SocketChannel channel = SocketChannel.open();
             channel.socket().connect(iAddr);
