@@ -31,10 +31,32 @@
 import java.io.IOException;
 import java.nio.channels.*;
 import java.net.*;
+import java.util.ArrayList;
 
 public class ExceptionTranslation {
     public static void main(String args[]) throws Exception {
-        InetSocketAddress iAddr = new InetSocketAddress("blahblahblah",7292);
+
+		ArrayList<InetSocketAddress> sockets = new ArrayList<>();
+        sockets.add(new InetSocketAddress("randomhostnamestring", 8943));
+        sockets.add(new InetSocketAddress("completely.different.host.name", 6327));
+
+        int fails=0;
+
+        for (InetSocketAddress socket : sockets) {
+            if(socket.isUnresolved()) {
+                // Correct path, socket should be unresolved as the host name is invalid
+                System.out.println("Socket is correctly unresolved");
+            } else {
+                System.out.println("Socket is incorrectly connected to IP: " + socket.getAddress());
+                fails++;
+            }
+        }
+
+        if (fails>0) {
+            throw new RuntimeException("Failed tests: " + fails);
+        }
+
+        /*InetSocketAddress iAddr = new InetSocketAddress("blahblahblah",7292);
 
 		if(iAddr.isUnresolved())
 			throw new Exception("Address is unresolved");
@@ -59,6 +81,6 @@ public class ExceptionTranslation {
             throw new RuntimeException("Expected exception not thrown");
         } catch(IOException e) {
             // Expepected result
-        }
+        }*/
     }
 }
