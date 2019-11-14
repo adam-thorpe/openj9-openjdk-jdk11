@@ -140,10 +140,10 @@ public class EchoTest {
      * check that the packet is the same length as the original.
      */
     private static void UDPEchoTest() throws IOException {
+		System.out.println("at echo test");
         DatagramChannel dc = Launcher.launchWithDatagramChannel(ECHO_SERVICE, null);
 
         String msg = "I was out saving the galaxy when your grandfather was in diapers";
-		System.out.println("AT ECHOTEST");
         ByteBuffer bb = ByteBuffer.wrap(msg.getBytes("UTF-8"));
         dc.write(bb);
 
@@ -154,6 +154,7 @@ public class EchoTest {
         dc.socket().receive(pkt2);
 
         if (pkt2.getLength() != msg.length()) {
+			System.out.println(pkt2.getData);
             throw new RuntimeException("Received packet of incorrect length");
         }
 

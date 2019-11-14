@@ -103,8 +103,12 @@ public class EchoService {
 		System.out.println("DATA RECIEVED:");
 		System.out.println(bb.array());
 
-        bb.flip();
-        dc.send(bb, sa);
+        //bb.flip();
+        //dc.send(bb, sa);
+		String msg = "Hello there this is the second message";
+		ByteBuffer bb2 = ByteBuffer.wrap(msg.getBytes("UTF-8"));
+		dc.send(bb2, sa);
+
         dc.close();
     }
 
