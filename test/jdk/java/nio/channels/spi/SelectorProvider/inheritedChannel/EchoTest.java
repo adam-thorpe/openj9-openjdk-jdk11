@@ -36,6 +36,7 @@
  *
  */
 import java.io.IOException;
+import java.util.Arrays;
 import java.net.DatagramPacket;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
@@ -76,7 +77,6 @@ public class EchoTest {
 
         // now we put the channel into non-blocking mode and we read the
         // reply from the service into a second buffer.
-
         ByteBuffer bb2 = ByteBuffer.allocate(size+100);
         sc.configureBlocking(false);
         Selector sel = sc.provider().openSelector();
