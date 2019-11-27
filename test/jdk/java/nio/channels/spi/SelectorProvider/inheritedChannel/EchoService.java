@@ -105,7 +105,7 @@ public class EchoService {
 
         //bb.flip();
         //dc.send(bb, sa);
-		String msg = "Hello there this is the second message";
+		String msg = "I was out saving the galaxy when your grandfather was in diaper2";
 		ByteBuffer bb2 = ByteBuffer.wrap(msg.getBytes("UTF-8"));
 		dc.send(bb2, sa);
 
