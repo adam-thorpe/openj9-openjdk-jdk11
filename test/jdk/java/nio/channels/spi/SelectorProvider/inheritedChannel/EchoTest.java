@@ -154,7 +154,8 @@ public class EchoTest {
         dc.socket().receive(pkt2);
 
         if (pkt2.getLength() != msg.length()) {
-			System.out.println(Arrays.toString(pkt2.getData()));
+			String testStr = new String(pkt2.getData());
+			System.out.println("OUTPUT: " + testStr);
             throw new RuntimeException("Received packet of incorrect length");
         }
 
